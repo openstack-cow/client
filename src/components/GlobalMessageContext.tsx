@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useRef, useState } from "react";
 
 type GlobalMessageType = "success" | "error";
 
@@ -21,10 +21,16 @@ export function GlobalMessageProvider({ children }: {
 }) {
     const [globalMessage, setGlobalMessageReal] = useState<string>("");
     const [globalMessageType, setGlobalMessageType] = useState<GlobalMessageType>("success");
+    const globalMessageClearTimeout = useRef<NodeJS.Timeout|null>(null);
 
     const setGlobalMessage = useCallback((message: string) => {
         setGlobalMessageReal(message);
-        setTimeout(() => {
+
+        if (globalMessageClearTimeout.current) {
+            clearTimeout(globalMessageClearTimeout.current);
+        }
+
+        globalMessageClearTimeout.current = setTimeout(() => {
             setGlobalMessageReal("");
         }, 5000);
     }, [setGlobalMessageReal]);

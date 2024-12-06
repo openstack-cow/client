@@ -3,6 +3,7 @@ import "./style.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useGlobalMessageContext } from "../../components/GlobalMessageContext";
+import { BACKEND_URL } from "../../env";
 
 const Register = () => {
   const { setGlobalMessage, setGlobalMessageType } = useGlobalMessageContext();
@@ -31,13 +32,11 @@ const Register = () => {
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://127.0.0.1:5000/signup", formData, {
+      const response = await axios.post(`${BACKEND_URL}/signup`, formData, {
         headers: {
           "Content-Type": "application/json"
         },
       });
-      // Handle the response
-    console.log(formData);
     if (response.status == 200) {
       setGlobalMessage(response.data.message); // Use response.data for the message
       setGlobalMessageType("success");
@@ -49,16 +48,13 @@ const Register = () => {
     setGlobalMessage(e || "An error occurred. Please try again.");
     setGlobalMessageType("error");
   }
-
-  // Clear the message after 3 seconds
-  setTimeout(() => setGlobalMessage(""), 3000);
 };
 
   // Sign-in handler
   const handleSignInSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://127.0.0.1:5000/login", {
+      const response = await axios.post(`${BACKEND_URL}/login`, {
         email: formData.email,
         password: formData.password,
       }, {
@@ -78,7 +74,6 @@ const Register = () => {
       console.error(err);
       setGlobalMessageType("error");
     }
-    setTimeout(() => setMessage(""), 3000); // Clear message after 3 seconds
   };
 
   return (
