@@ -1,0 +1,98 @@
+/* Sidebar container */
+.sidebar {
+  width: 250px;
+  background-color: #1e293b; /* Màu nền xanh đậm */
+  color: #f1f5f9; /* Màu chữ sáng */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 1rem;
+  transition: width 0.3s ease;
+}
+
+/* Sidebar khi thu gọn */
+.sidebar.collapsed {
+  width: 80px;
+}
+
+/* Header với nút toggle */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* Nút toggle */
+.toggleButton {
+  background: none;
+  border: none;
+  color: #f1f5f9;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Sidebar link */
+.sidebarLink {
+  color: #e2e8f0; /* Màu chữ nhạt hơn để dịu mắt */
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  text-decoration: none;
+  gap: 12px;
+}
+
+/* Căn giữa icon khi Sidebar thu gọn */
+.sidebar.collapsed .sidebarLink {
+  justify-content: center;
+  padding: 12px 0;
+}
+
+/* Icon style */
+.icon {
+  color: #94a3b8;
+  font-size: 1.5rem;
+}
+
+/* Hover effect */
+.sidebarLink:hover {
+  background-color: #334155;
+  color: #f1f5f9;
+}
+
+.sidebarLink:hover .icon {
+  color: #f1f5f9;
+}
+
+/* Active link */
+.active {
+  background-color: #475569;
+  color: #f8fafc;
+  font-weight: bold;
+}
+
+/* Log Out link */
+.logoutLink {
+  margin-top: auto;
+  color: #f87171;
+  padding: 12px 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Căn giữa icon khi Sidebar thu gọn */
+.sidebar.collapsed .logoutLink {
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.logoutLink:hover {
+  background-color: #b91c1c;
+  color: #f1f5f9;
+}
