@@ -3,5 +3,12 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": {
+    "baseUrl": "./src", // Sets the base directory for the project
+    "paths": {
+      "@components/*": ["components/*"], // Alias for components
+      "@pages/*": ["pages/*"],           // Alias for pages
+    }
+  }
 }
