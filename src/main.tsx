@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const queryClient = new QueryClient();
 
-
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <GlobalMessageProvider>
