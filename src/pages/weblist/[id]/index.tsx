@@ -5,6 +5,7 @@ import WebsiteInfoCard from '@components/WebsiteDetails/WebsiteInfoCard';
 import VMConfigCard from '@components/WebsiteDetails/VMConfigCard';
 import { Container, Spinner, Alert } from 'react-bootstrap';
 import WebsiteTab from '@components/WebsiteDetails/WebsiteTab';
+import Sidebar from '../components/Sidebar';
 
 const WebsitePage = () => {
     const { id } = useParams<{ id: string }>();
@@ -16,15 +17,13 @@ const WebsitePage = () => {
     const { websiteInfo, vmConfig } = data;
 
     return (
-        
-        <Container>
-            <h1 className="text-center my-4">Website Details</h1>
-            {/* <WebsiteInfoCard website={websiteInfo} /> */}
-            <VMConfigCard config={vmConfig} websiteInfo={websiteInfo} />
-            {/* Tab components */}
-
-            <WebsiteTab />
-        </Container>
+        <div className="d-flex">
+      <Sidebar />
+      <Container fluid className="py-4" style={{ backgroundColor: '#f1f5f9' }}>
+        <VMConfigCard config={vmConfig} websiteInfo={websiteInfo} />
+        <WebsiteTab />
+      </Container>
+    </div>
     );
 };
 

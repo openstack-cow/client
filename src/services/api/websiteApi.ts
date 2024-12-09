@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+import { BACKEND_URL } from "@env/index";
 
 export const getWebsiteDetails = async (id: string) => {
     console.log(BACKEND_URL)
