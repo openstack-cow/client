@@ -9,6 +9,11 @@
     "paths": {
       "@components/*": ["components/*"], // Alias for components
       "@pages/*": ["pages/*"],           // Alias for pages
+      "@services/*": ["services/*"],
+      "@types/*": ["types/*"],
+      "@hooks/*": ["hooks/*"],
+      "@utils/*": ["utils/*"],
+      "@env/*": ["env/*"],
     }
   }
 }
