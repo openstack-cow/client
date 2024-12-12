@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./style.css";
+import styles from "./style.module.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useGlobalMessageContext } from "../../components/GlobalMessageContext";
@@ -77,31 +77,33 @@ const Register = () => {
   };
 
   return (
+    <div className={styles.body}>
     <div
-      className={`container ${isRightPanelActive ? "right-panel-active" : ""}`}
+      className={`${styles.container} ${isRightPanelActive ? styles["right-panel-active"] : ""}`}
       id="container"
     >
-      <div className="form-container sign-up-container">
-        <form onSubmit={handleSignUpSubmit}>
-          <h1>Create Account</h1>
-          <div className="social-container">
-            <a href="#" className="social">
+      <div className={`${styles["form-container"]} ${styles["sign-up-container"]}`}>
+        <form className={styles.form} onSubmit={handleSignUpSubmit}>
+          <h1 className={styles.h1}>Create Account</h1>
+          <div className={styles["social-container"]}>
+            <a href="#" className={styles.a + " " + styles.social}>
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="#" className="social">
+            <a href="#" className={styles.a + " " + styles.social}>
               <i className="fab fa-google-plus-g"></i>
             </a>
-            <a href="#" className="social">
+            <a href="#" className={styles.a + " " + styles.social}>
               <i className="fab fa-linkedin-in"></i>
             </a>
           </div>
-          <span>or use your email for registration</span>
+          <span className={styles.span}>or use your email for registration</span>
           <input
             type="text"
             name="name"
             placeholder="Name"
             value={formData.name}
             onChange={handleInputChange}
+            className={styles.input}
           />
           <input
             type="email"
@@ -109,6 +111,7 @@ const Register = () => {
             placeholder="Email"
             value={formData.email}
             onChange={handleInputChange}
+            className={styles.input}
           />
           <input
             type="password"
@@ -116,33 +119,35 @@ const Register = () => {
             placeholder="Password"
             value={formData.password}
             onChange={handleInputChange}
+            className={styles.input}
           />
-          <button type="submit" style={{ marginTop: "20px" }}>
+          <button className={styles.button} type="submit" style={{ marginTop: "20px" }}>
             Sign Up
           </button>
         </form>
       </div>
-      <div className="form-container sign-in-container">
-        <form onSubmit={handleSignInSubmit}>
-          <h1>Sign in</h1>
-          <div className="social-container">
-            <a href="#" className="social">
+      <div className={`${styles["form-container"]} ${styles["sign-in-container"]}`}>
+        <form onSubmit={handleSignInSubmit} className={styles.form}>
+          <h1 className={styles.h1}>Sign in</h1>
+          <div className={styles["social-container"]}>
+            <a href="#" className={styles.a + " " + styles.social}>
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="#" className="social">
+            <a href="#" className={styles.a + " " + styles.social}>
               <i className="fab fa-google-plus-g"></i>
             </a>
-            <a href="#" className="social">
+            <a href="#" className={styles.a + " " + styles.social}>
               <i className="fab fa-linkedin-in"></i>
             </a>
           </div>
-          <span>or use your account</span>
+          <span className={styles.span}>or use your account</span>
           <input
             type="email"
             name="email"
             placeholder="Email"
             value={formData.email}
             onChange={handleInputChange}
+            className={styles.input}
           />
           <input
             type="password"
@@ -150,31 +155,33 @@ const Register = () => {
             placeholder="Password"
             value={formData.password}
             onChange={handleInputChange}
+            className={styles.input}
           />
-          <button type="submit" style={{ marginTop: "20px" }}>
+          <button type="submit" style={{ marginTop: "20px" }} className={styles.button}>
             Sign In
           </button>
         </form>
       </div>
-      <div className="overlay-container">
-        <div className="overlay">
-          <div className="overlay-panel overlay-left">
-            <h1>Welcome Back!</h1>
-            <p>To keep connected with us please login with your personal info</p>
-            <button className="ghost" id="signIn" onClick={togglePanel}>
+      <div className={styles["overlay-container"]}>
+        <div className={styles.overlay}>
+          <div className={styles["overlay-panel"]+ " " + styles["overlay-left"]}>
+            <h1 className={styles.h1}>Welcome Back!</h1>
+            <p className={styles.p}>To keep connected with us please login with your personal info</p>
+            <button className={`${styles.button} ${styles.ghost}`} id="signIn" onClick={togglePanel}>
               Sign In
             </button>
           </div>
-          <div className="overlay-panel overlay-right">
-            <h1>Hello, Friend!</h1>
-            <p>Enter your personal details and start your journey with us</p>
-            <button className="ghost" id="signUp" onClick={togglePanel}>
+          <div className={`${styles["overlay-panel"]} ${styles["overlay-right"]}`}>
+            <h1 className={styles.h1}>Hello, Friend!</h1>
+            <p className={styles.p}>Enter your personal details and start your journey with us</p>
+            <button className={`${styles.button} ${styles.ghost}`} id="signUp" onClick={togglePanel}>
               Sign Up
             </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

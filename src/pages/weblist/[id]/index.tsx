@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useWebsiteDetails } from './hooks/useWebsiteDetails';
-import WebsiteInfoCard from '@components/WebsiteDetails/WebsiteInfoCard';
 import VMConfigCard from '@components/WebsiteDetails/VMConfigCard';
 import { Container, Spinner, Alert } from 'react-bootstrap';
 import WebsiteTab from '@components/WebsiteDetails/WebsiteTab';
