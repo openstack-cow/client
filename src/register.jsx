@@ -69,7 +69,7 @@ const Register = () => {
       if (response.status == 200) {
         setMessage(response.data.message);
         setMessageType("success");
-        setTimeout(() => navigate('/'), 2000);
+        setTimeout(() => navigate('/'), 1000);
       } 
     } catch (err) {
       const e = err?.response?.data?.error;
