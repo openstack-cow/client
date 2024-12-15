@@ -1,5 +1,4 @@
 import { createContext, useCallback, useContext, useRef, useState } from "react";
-
 type GlobalMessageType = "success" | "error";
 
 type GlobalMessageContextType = {

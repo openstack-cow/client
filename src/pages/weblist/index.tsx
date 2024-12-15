@@ -51,7 +51,6 @@ const WebsiteList = () => {
 
   return (
     <div className="d-flex">
-      <Sidebar />
       <Container fluid className="py-4" style={{ backgroundColor: '#f1f5f9' }}>
         <Card className="p-4 shadow-sm border-0 rounded-4">
           <Row className="mb-4 g-3 align-items-center">
