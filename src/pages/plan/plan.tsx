@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import "./plan.css"
 import { useGlobalMessageContext } from '../../components/GlobalMessageContext';
+
 const DeploymentConfig = () => {
   const [buildScript, setBuildScript] = useState('npm ci && npm run build');
   const [startScript, setStartScript] = useState('npm run start');
@@ -16,8 +17,6 @@ const DeploymentConfig = () => {
     'ram':'250 MB RAM', 
     'storage':'300 MB storage'
   }; 
-
-  
 
   const handleSubmit = () => {
     if (port < 1024) {
