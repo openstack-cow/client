@@ -1,4 +1,3 @@
-import React from 'react';
 import { Row, Col, Card, Button, Dropdown } from "react-bootstrap";
 
 interface VMConfig {

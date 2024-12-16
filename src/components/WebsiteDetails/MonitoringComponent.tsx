@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -14,7 +14,7 @@ ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale);
 const MonitoringComponent = () => {
   const [cpuData, setCpuData] = useState<number[]>([]); // Store CPU usage values
   const [timestamps, setTimestamps] = useState<string[]>([]); // Store timestamps
-  const intervalRef = useRef<NodeJS.Timer | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Simulate CPU usage data for demonstration (replace this with actual data from an API)
   const fetchCPUUsage = () => {

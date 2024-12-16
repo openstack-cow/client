@@ -1,7 +1,8 @@
-import React from "react";
 import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children } : {
+  children: React.ReactNode,
+}) => {
   const isAuthenticated = !!localStorage.getItem("token"); // Kiểm tra token lưu trong localStorage
 
   if (!isAuthenticated) {

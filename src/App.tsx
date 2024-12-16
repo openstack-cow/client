@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/home/home';
+// @ts-ignore
 import Register  from './pages/auth';
 import WebsitePage from './pages/weblist/[id]';
 import WebsiteList from './pages/weblist';
