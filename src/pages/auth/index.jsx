@@ -13,7 +13,6 @@ const Register = () => {
     email: "",
     password: "",
   });
-
   // navigate route
   const navigate = useNavigate();
 
@@ -65,6 +64,7 @@ const Register = () => {
 
       if (response.status == 200) {
         setGlobalMessage(response.data.message);
+        localStorage.setItem("token", response.token); // Lưu token vào localStorage
         setGlobalMessageType("success");
         navigate('/');
       } 
