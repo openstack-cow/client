@@ -20,7 +20,7 @@ const App = () => {
 
           {/* Protected Routes */}
           <Route
-            path="/weblist/:id"
+            path="/websites/:id"
             element={
               <ProtectedRoute>
                 <WebsitePage />
@@ -36,7 +36,7 @@ const App = () => {
             }
           />
           <Route
-            path="/plans/setup/:plantId"
+            path="/plans/setup/:planId"
             element={
               <ProtectedRoute>
                 < Plan/>
