@@ -66,7 +66,7 @@ function Home() {
     }
 
     fetchFeatures();
-  });
+  }, []);
 
   return (
     <section className={styles.pricing}>
