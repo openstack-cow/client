@@ -1,5 +1,45 @@
 import styles from "./home.module.css";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from "react";
+import { BACKEND_URL } from "../../env";
+
+interface Plan {
+  id: number;
+  type: string;
+  name: string;
+  storage_in_mb: number;
+  ram_in_mb: number;
+  cpu_cores: number;
+  has_redis: boolean;
+  has_mysql: boolean;
+  monthly_fee_in_usd: number;
+}
+
+
+// Fetch a specific plan by ID
+const fetchPlanById = async (planId: number): Promise<Plan> => {
+  try {
+    const response = await axios.get<Plan>(`${BACKEND_URL}/plans/${planId}`);
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response) {
+      throw error.response.data; // Handle API errors
+    }
+    throw new Error('Failed to fetch plan');
+  }
+}
+
+const getFeaturesPlan = async (planId : number): Promise<string[]> => {
+  const plan = await fetchPlanById(planId);
+
+  return [
+    'Node.js', // Assuming this is fixed
+    `${plan.cpu_cores} CPU core${plan.cpu_cores > 1 ? 's' : ''}`,
+    `${plan.ram_in_mb} MB RAM`,
+    `${plan.storage_in_mb} MB storage`,
+  ];
+};
 
 function Home() {
   const navigate = useNavigate();
@@ -7,31 +47,27 @@ function Home() {
   const handleRedirect = (_plan_id : number) => { 
     navigate(`/plans/setup/${_plan_id}`);
   }
-  
-  const features_plan_1 = {
-    'language': 'Node.js',
-    'cpu': '1 CPU core',
-    'ram': '250 MB RAM',
-    'storage': '300 MB storage'
-  }
-  
-  const features_plan_2 = {
-    'language': 'Node.js',
-    'cpu': '1 CPU core',
-    'ram': '500 MB RAM',
-    'storage': '500 MB storage',
-    'database': 'MySQL database'
-  };
 
-  const features_plan_3 = {
-    'language': 'Node.js',
-    'cpu': '2 CPU core',
-    'ram': '600 MB RAM',
-    'storage': '1GB storage',
-    'database': 'MySQL database',
-    'cache': 'Redis'
-  }
-   
+  const [features_plan_1, set_features_plan_1] = useState([] as string[])
+  const [features_plan_2, set_features_plan_2] = useState([] as string[])
+  const [features_plan_3, set_features_plan_3] = useState([] as string[])
+
+  useEffect(() => {
+    const fetchFeatures = async () => {
+      const [a, b, c] = await Promise.all([
+        getFeaturesPlan(1),
+        getFeaturesPlan(2),
+        getFeaturesPlan(3),
+      ]);
+
+      set_features_plan_1(a);
+      set_features_plan_2(b);
+      set_features_plan_3(c);
+    }
+
+    fetchFeatures();
+  });
+
   return (
     <section className={styles.pricing}>
       <h1>Choose plan for your application</h1>
